@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>El Impostor</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <main id="app">
+        <!-- LOBBY -->
+        <section id="lobby" class="screen">
+            <h1>El Impostor — Crear partida</h1>
+            <div class="form-row">
+                <label>Número de jugadores</label>
+                <div class="num-control">
+                    <button id="players-decr">–</button>
+                    <input id="players-count" type="number" min="3" value="6">
+                    <button id="players-incr">+</button>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <label>Número de impostores</label>
+                
+                <div class="random-control">
+                    <div class="random-label">Aleatorio</div>
+                    <label class="switch">
+                        <input id="random-impostors" type="checkbox" />
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="num-control">
+                    <button id="impostors-decr">–</button>
+                    <input id="impostors-count" type="number" min="1" value="1">
+                    <button id="impostors-incr">+</button>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <label>Tiempo por visualización</label>
+                <select id="reveal-time">
+                    <option value="8">8 s</option>
+                    <option value="12" selected>12 s</option>
+                    <option value="20">20 s</option>
+                    <option value="0">Ilimitado</option>
+                </select>
+            </div>
+
+            <div class="buttons">
+                <button id="preview-words">Vista previa (5 palabras)</button>
+                <button id="start-game" class="primary">Iniciar reparto</button>
+            </div>
+
+            <p id="lobby-msg" class="msg"></p>
+            <footer class="small">Recomendado: 1 impostor para 4–7 jugadores.</footer>
+        </section>
+
+        <!-- PASS-AND-PLAY: PASALO -->
+        <section id="pass" class="screen hidden">
+            <h2>PASA EL MÓVIL</h2>
+            <p id="pass-instr">Pásalo al JUGADOR <span id="pass-player">1</span>. Pulsa "Revelar rol" cuando esté listo.
+            </p>
+            <div class="small">Jugador <span id="pass-index">1</span> de <span id="pass-total">6</span></div>
+            <div class="buttons">
+                <button id="reveal-role" class="primary">Revelar rol</button>
+            </div>
+        </section>
+
+        <!-- VISUALIZACION PRIVADA -->
+        <section id="reveal" class="screen hidden">
+            <div class="card">
+                <h2>TU ROL</h2>
+                <div id="role-label" class="role-label">CIVIL</div>
+                <div id="word-box" class="word-box">PALABRA</div>
+
+                <div id="timer" class="timer hidden">00:12</div>
+
+                <div class="buttons">
+                    <button id="hide-role" class="primary">Ocultar rol</button>
+                </div>
+                <p class="small">Pulsa "Ocultar rol" cuando lo hayas visto. Solo podrás ver tu rol una vez.</p>
+            </div>
+        </section>
+
+        <!-- TRANSICION / OCULTO -->
+        <section id="transition" class="screen hidden">
+            <h2>Oculto</h2>
+            <p id="transition-text">Palabra oculta. Pasa el móvil al siguiente jugador.</p>
+            <div class="buttons">
+                <button id="next-player" class="primary">Siguiente</button>
+            </div>
+            <div class="small">Progreso: <span id="progress">1/6</span></div>
+        </section>
+
+        <!-- COMPLETADO -->
+        <section id="complete" class="screen hidden">
+            <h2>Reparto completado</h2>
+            <p>Todos los jugadores han visto su rol. Listos para jugar.</p>
+            <div class="buttons">
+                <button id="restart" class="primary">Reiniciar reparto</button>
+                <button id="back-to-lobby">Volver al menú</button>
+            </div>
+            <div class="small" id="summary"></div>
+        </section>
+    </main>
+
+    <script src="js/app.js" defer></script>
+</body>
+
+</html>
