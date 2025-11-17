@@ -66,7 +66,7 @@
   // carga palabras
   async function loadWords() {
     try {
-      const res = await fetch("../json/dictionary.json", { cache: "no-store" });
+      const res = await fetch("./json/dictionary.json", { cache: "no-store" });
       if (res.ok) {
         const json = await res.json();
         if (Array.isArray(json) && json.length > 0) {
@@ -76,7 +76,7 @@
           state.loaded = true;
           DOM.lobbyMsg.textContent = "";
           console.log(
-            "Loaded words from ../json/dictionary.json (count:)",
+            "Loaded words from ./json/dictionary.json (count:)",
             WORDS.length
           );
           return;
@@ -111,7 +111,7 @@
     state.chosenWord = null;
 
     if (WORDS.length > 0) state.chosenWord = WORDS[randInt(WORDS.length)];
-    else state.chosenWord = "PALABRA";
+    else state.chosenWord = "ERROR";
 
     const indices = new Set();
     if (state.K >= state.N) {
